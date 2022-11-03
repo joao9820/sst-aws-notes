@@ -1,12 +1,13 @@
 import * as uuid from 'uuid';
-import AWS from 'aws-sdk';
+//import AWS from 'aws-sdk';
+import handler from "../util/handler";
+import dynamoDb from "../util/dynamodb";
 
 //aws-sdk permite utilizar vários serviços da AWS
-const dynamoDb = new AWS.DynamoDB.DocumentClient();
+//const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-export async function main(event){
-
-  //corpo da solicitação HTTP
+//Código refatorado
+export const main = handler(async(event) => {//corpo da solicitação HTTP
   const data = JSON.parse(event.body);
 
   const params = {
@@ -17,10 +18,17 @@ export async function main(event){
       content: data.content,
       attachment: data.attachment,
       createdAt: Date.now(),
-    }
+    },
   };
 
-  try {
+  await dynamoDb.put(params);
+
+  return params.Item;
+
+});
+
+
+  /* try {
     await dynamoDb.put(params).promise();
 
     return {
@@ -33,6 +41,4 @@ export async function main(event){
       statusCode: 500,
       body: JSON.stringify({error: e.message}),
     }
-  }
-
-}
+  }*/
