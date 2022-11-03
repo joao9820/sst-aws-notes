@@ -19,6 +19,7 @@ export function ApiStack({stack, app}){
     },
     routes: {
       //Adionando rota para criar nota
+      "GET /notes": "functions/list.main",
       "GET /notes/{id}": "functions/get.main",
       "POST /notes": "functions/create.main",
     },
