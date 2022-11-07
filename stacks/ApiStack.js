@@ -3,6 +3,7 @@ import  {StorageStack} from './StorageStack';
 
 export function ApiStack({stack, app}){
 
+  //O Deploy só ocorre ao salvar stacks
   const {table} = use(StorageStack);
 
   //Create the API
@@ -22,6 +23,7 @@ export function ApiStack({stack, app}){
       "GET /notes": "functions/list.main",
       "GET /notes/{id}": "functions/get.main",
       "POST /notes": "functions/create.main",
+      "PUT /notes/{id}": "functions/update.main"
     },
   });
 
