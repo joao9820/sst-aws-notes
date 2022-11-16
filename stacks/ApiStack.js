@@ -9,6 +9,8 @@ export function ApiStack({stack, app}){
   //Create the API
   const api = new Api(stack, "Api", {
     defaults: {
+      //Indica que queremos utilizar o AWS-IAM em todas as rotas
+      authorizer: 'iam',
       function: {
         //Permissão para api acessar a table DynamoDB
         permissions: [table],
