@@ -28,7 +28,8 @@ export function AuthStack({stack, app}) {
 
   stack.addOutputs({
     Region: app.region,
-    UserPoolId: auth.cognitoIdentityPoolId,
+    UserPoolId: auth.userPoolId,
+    IdentityPoolId: auth.cognitoIdentityPoolId,
     UserPoolClientId: auth.userPoolClientId,
   });
 
