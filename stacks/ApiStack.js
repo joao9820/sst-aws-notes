@@ -17,6 +17,7 @@ export function ApiStack({stack, app}){
         environment: {
           //var de ambienete que indentifica o nome da nossa tabela
           TABLE_NAME: table.tableName,
+          STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
         },
       },
     },
